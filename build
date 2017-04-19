@@ -1,1 +1,1 @@
-docker build -t ivankostov/eclipse-cdt .
+docker build -t ivankostov/eclipse-arduino .

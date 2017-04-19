@@ -6,4 +6,4 @@ docker run -ti --rm \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
         -v $PWD/workspace:/home/develop/workspace \
 	-v $(pwd)/workspace:/home/developer/workspace -e USER=$USER  -e USERID=$UID \
-	    ivankostov/eclipse-cdt
+	    ivankostov/eclipse-arduino

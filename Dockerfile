@@ -18,6 +18,9 @@ RUN wget http://ftp.fau.de/eclipse/technology/epp/downloads/release/neon/3/eclip
 
 ADD run /usr/local/bin/eclipse
 
+ADD arduino.tar.gz /home/developer
+
+
 RUN chmod +x /usr/local/bin/eclipse && \
     useradd -ms /bin/bash  developer
 
