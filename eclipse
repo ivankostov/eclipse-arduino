@@ -1,17 +1,25 @@
 #!/bin/bash
 
 dir=$PWD/workspace
+gitdir=$PWD/git
 
+function createDir
+{
+	if [[ ! -e $1 ]]; then
+	    mkdir $1
+	elif [[ ! -d $1 ]]; then
+	    echo "$1 already exists but is not a directory" 1>&2
+	fi
+}
 
-if [[ ! -e $dir ]]; then
-    mkdir $dir
-elif [[ ! -d $dir ]]; then
-    echo "$dir already exists but is not a directory" 1>&2
-fi
+createDir $dir
+createDir $gitdir
 
 docker run -ti --rm \
 	--cap-add=SYS_PTRACE \
 	-e DISPLAY=$DISPLAY \
+	-e USER=$USER  -e USERID=$UID \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-	-v $dir:/home/developer/workspace -e USER=$USER  -e USERID=$UID \
+	-v $dir:/home/developer/workspace \
+	-v $gitdir:/home/developer/git \
 	ivankostov/eclipse-arduino
